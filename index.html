@@ -25,6 +25,8 @@
                 
                 // CSV in Zeilen aufteilen (die erste Zeile sind die Überschriften)
                 const rows = csv.split('\n').slice(1); 
+
+                rows.reverse();
                 
                 rows.forEach(row => {
                     // Spalten aufteilen (Zeitstempel, Name, Level, Prozent, Beweis)
