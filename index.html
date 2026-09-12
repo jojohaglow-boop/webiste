@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Unsere Demon List</title>
+    <style>
+        body { font-family: sans-serif; background: #1a1a1a; color: white; }
+        .record { background: #333; margin: 10px; padding: 15px; border-radius: 8px; }
+    </style>
+</head>
+<body>
 
+    <h1>🔥 Squad Demon List</h1>
+    <div id="list-container">Lade Daten...</div>
+
+    <script>
+        // Füge hier deinen kopierten CSV-Link ein
+        const sheetUrl = 'HIER_DEIN_CSV_LINK_EINFÜGEN';
+
+        fetch(sheetUrl)
+            .then(response => response.text())
+            .then(csv => {
+                const container = document.getElementById('list-container');
+                container.innerHTML = ''; // "Lade Daten..." entfernen
+                
+                // CSV in Zeilen aufteilen (die erste Zeile sind die Überschriften)
+                const rows = csv.split('\n').slice(1); 
+                
+                rows.forEach(row => {
+                    // Spalten aufteilen (Zeitstempel, Name, Level, Prozent, Beweis)
+                    // Wichtig: Geht davon aus, dass niemand Kommas in die Textfelder tippt!
+                    const columns = row.split(','); 
+                    if(columns.length >= 4) {
+                        const name = columns[1];
+                        const level = columns[2];
+                        const percent = columns[3];
+                        const proof = columns[4];
+
+                        // HTML für jeden Eintrag bauen
+                        container.innerHTML += `
+                            <div class="record">
+                                <h3>${level} (${percent}%)</h3>
+                                <p>Geschafft von: ${name}</p>
+                                <a href="${proof}" target="_blank" style="color: #00ff00;">Video ansehen</a>
+                            </div>
+                        `;
+                    }
+                });
+            });
+    </script>
+
+</body>
+</html>
