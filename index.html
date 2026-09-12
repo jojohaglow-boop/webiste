@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Unsere Demon List</title>
+    <title>EZ Victories</title>
     <style>
         body { font-family: sans-serif; background: #1a1a1a; color: white; }
         .record { background: #333; margin: 10px; padding: 15px; border-radius: 8px; }
@@ -30,7 +30,7 @@
                     // Spalten aufteilen (Zeitstempel, Name, Level, Prozent, Beweis)
                     // Wichtig: Geht davon aus, dass niemand Kommas in die Textfelder tippt!
                     const columns = row.split(','); 
-                    if(columns.length >= 4) {
+                    if(columns.length >= 3) {
                         const level = columns[1];
                         const percent = columns[2];
                         const nickname = columns[3];
