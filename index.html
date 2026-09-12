@@ -14,23 +14,21 @@
     <div id="list-container">Slacking off...</div>
 
     <script>
-        // Füge hier deinen kopierten CSV-Link ein
+       
         const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRmXrueZxTHEJB2VVYz36G7dNiWJPhL8SscQ5sKd6CGuvwTPX6ArSyXFdJ2hNP8xPXuixx-YHOOqG0A/pub?output=csv';
 
         fetch(sheetUrl)
             .then(response => response.text())
             .then(csv => {
                 const container = document.getElementById('list-container');
-                container.innerHTML = ''; // "Lade Daten..." entfernen
+                container.innerHTML = ''; 
                 
-                // CSV in Zeilen aufteilen (die erste Zeile sind die Überschriften)
                 const rows = csv.split('\n').slice(1); 
 
                 rows.reverse();
                 
                 rows.forEach(row => {
-                    // Spalten aufteilen (Zeitstempel, Name, Level, Prozent, Beweis)
-                    // Wichtig: Geht davon aus, dass niemand Kommas in die Textfelder tippt!
+                    
                     const columns = row.split(','); 
                     if(columns.length >= 4) {
                         const time = columns[0]
@@ -38,10 +36,10 @@
                         const percent = columns[2];
                         const nickname = columns[3];
 
-                        // HTML für jeden Eintrag bauen
+                        
                         container.innerHTML += `
                             <div class="record">
-                                <h3>${level} (${percent}%)</h3>
+                                <h3>${level} (${percent})</h3>
                                 <p>${nickname} hat gekocht</p>
                                 <p>${time}<p/>
                             </div>
