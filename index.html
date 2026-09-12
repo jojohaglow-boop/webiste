@@ -31,17 +31,15 @@
                     // Wichtig: Geht davon aus, dass niemand Kommas in die Textfelder tippt!
                     const columns = row.split(','); 
                     if(columns.length >= 4) {
-                        const name = columns[1];
-                        const level = columns[2];
-                        const percent = columns[3];
-                        const proof = columns[4];
+                        const level = columns[1];
+                        const percent = columns[2];
+                        const nickname = columns[3];
 
                         // HTML für jeden Eintrag bauen
                         container.innerHTML += `
                             <div class="record">
                                 <h3>${level} (${percent}%)</h3>
-                                <p>Geschafft von: ${name}</p>
-                                <a href="${proof}" target="_blank" style="color: #00ff00;">Video ansehen</a>
+                                <p>Geschafft von: ${nickname}</p>
                             </div>
                         `;
                     }
